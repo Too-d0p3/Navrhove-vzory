@@ -1,0 +1,44 @@
+﻿@model AuctionForm
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Název: @ViewBag.car.Name</h2>
+
+<b>Typ:</b> @ViewBag.car.Type
+<br>
+<b>Spotřeba: </b> @ViewBag.car.Consumption
+<br>
+<b>Rok výroby:</b> @ViewBag.car.YearOfManufacture
+<br>
+<b>Stav tachometru:</b> @ViewBag.car.Tachometer
+<br>
+<b>Palivo:</b> @ViewBag.car.Fuel
+<br>
+<b>Cena:</b> @ViewBag.car.Price
+<br>
+<b>Prodejce:</b> @ViewBag.car.user.FirstName @ViewBag.car.user.LastName
+<br>
+<br>
+
+
+@if (ViewBag.hasCarAuction)
+{
+    <h2>Aukce</h2>
+    <b>Aktuální příhoz: </b> @ViewBag.car.auction.CurrentBid <b>Konec aukce: </b> @ViewBag.car.auction.EndDate
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            @Html.LabelFor(x => x.bid)
+            @Html.TextBoxFor(x => x.bid, new { @type = "number" })
+            @Html.ValidationMessageFor(x => x.bid)
+        </p>
+        <button type="submit" class="button"> Přihodit v aucki </button>
+    }
+}
+
+<a asp-area="" asp-controller="Car" asp-action="Update" asp-route-id="@ViewBag.car.ID">Upravit auto</a>
+<a asp-area="" asp-controller="Car" asp-action="Delete" asp-route-id="@ViewBag.car.ID">Smazat</a>
+

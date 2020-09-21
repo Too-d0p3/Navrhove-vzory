@@ -1,0 +1,47 @@
+﻿@model Lib.DomainLayer.Car
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>List</h2>
+<table>
+    <thead>
+        <th>
+            Název
+        </th>
+        <th>
+            Typ
+        </th>
+        <th>
+            Cena
+        </th>
+        <th>
+            Rok výroby
+        </th>
+        <th>
+            Uživatel
+        </th>
+    </thead>
+    <tbody>
+@foreach (Lib.DomainLayer.Car car in ViewBag.cars) { 
+        <tr>
+            <td>
+                
+                <a asp-area="" asp-controller="Car" asp-action="Detail" asp-route-id="@car.ID">@car.Name</a>
+            </td>
+            <td>
+                @car.Type
+            </td>
+            <td>
+                @car.Price
+            </td>
+            <td>
+                @car.YearOfManufacture
+            </td>
+            <td>            
+                <a asp-area="" asp-controller="User" asp-action="Detail" asp-route-id="@car.user.ID">@car.user.FirstName @car.user.LastName</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

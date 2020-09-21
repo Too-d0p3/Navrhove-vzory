@@ -1,0 +1,50 @@
+﻿@model CarForm
+@{
+    ViewData["Title"] = "Přidání auta";
+}
+
+
+<div>
+    <h2 style="align-items:center;">Upravit auto</h2>
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name)
+            @Html.ValidationMessageFor(x => x.Name)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Type)
+            @Html.TextBoxFor(x => x.Type)
+            @Html.ValidationMessageFor(x => x.Type)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Consumption)
+            @Html.TextBoxFor(x => x.Consumption, new { @type = "number" })
+            @Html.ValidationMessageFor(x => x.Consumption)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price, new { @type = "number" })
+            @Html.ValidationMessageFor(x => x.Price)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.YearOfManufacture)
+            @Html.TextBoxFor(x => x.YearOfManufacture, new { @type = "number" })
+            @Html.ValidationMessageFor(x => x.YearOfManufacture)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Tachometer)
+            @Html.TextBoxFor(x => x.Tachometer, new { @type = "number" })
+            @Html.ValidationMessageFor(x => x.Tachometer)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Fuel)
+            @Html.TextBoxFor(x => x.Fuel)
+            @Html.ValidationMessageFor(x => x.Fuel)
+        </p>
+
+        <button type="submit" class="button"> Upravit auto </button>
+    }
+</div>
